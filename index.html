@@ -1,0 +1,62 @@
+      <!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Age Calculator</title>
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+  <img src="images/banner.png" alt="Demo banner">
+  <h1>Age Calculator</h1>
+</body> 
+  <p>Введите дату рождения и узнайте свой возраст!</p>:
+## 📸 Скриншоt
+
+<img width="1024" height="623" alt="image" src="https://github.com/user-attachments/assets/1863555b-8856-4727-9906-fa2452cb79ac" /
+
+
+
+
+</body> 
+</html>
+  
+  </style>
+</head>
+<body>
+  <div class="container">
+    <!-- Баннер или картинка -->
+      <h1>Age Calculator</h1>
+    <input type="date" id="birthdate">
+    <button onclick="calculateAge()">Calculate</button>
+    <p id="result"></p>
+  </div> 
+    <script>
+    function calculateAge() {
+      const birthdate = document.getElementById('birthdate').value;
+      if (!birthdate) return;
+      const today = new Date();
+      const dob = new Date(birthdate);
+      let age = today.getFullYear() - dob.getFullYear();
+      const m = today.getMonth() - dob.getMonth();
+      if (m < 0 || (m === 0 && today.getDate() < dob.getDate())) {
+        age--;
+        }
+      document.getElementById('result').textContent = "Your age is " + age;
+    }
+  </script>
+</body>
+</html>
+
+    
+
+
+
+      
+    
+
+  
+
+
+
+
+
