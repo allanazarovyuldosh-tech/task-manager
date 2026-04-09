@@ -24,6 +24,10 @@
 
    git clone https://github.com/allanazarovyuldosh-tech/task-manager.git
    cd task-manager
+echo "# Task Manager" > README.md
+git add README.md
+git commit -m "Initial commit with README"
+git push origin main
 
 
 
