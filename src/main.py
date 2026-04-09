@@ -1,1 +1,2 @@
+print("Task Manager запущен!")
 
