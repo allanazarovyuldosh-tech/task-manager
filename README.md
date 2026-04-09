@@ -14,7 +14,14 @@
 
 ## 🚀 Начало работы
 1. Клонируй репозиторий:
-   ```bash
+   ```bash node src/index.js
+
+   git clone https://github.com/allanazarovyuldosh-tech/task-manager.git
+   cd task-manager
+## 🚀 Запуск проекта
+1. Клонируй репозиторий:
+   ```bash python src/main.py
+
    git clone https://github.com/allanazarovyuldosh-tech/task-manager.git
    cd task-manager
 
