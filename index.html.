@@ -50,6 +50,33 @@
   </script>
 </body>
 </html>
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+  <meta charset="UTF-8">
+  <title>Task Manager</title>
+  <style>
+    body { font-family: Arial; background: #f4f4f4; text-align: center; }
+    #tasks { list-style: none; padding: 0; }
+    li { background: #fff; margin: 5px; padding: 10px; border: 1px solid #ccc; }
+  </style>
+</head>
+<body>
+  <h1>Task Manager</h1>
+  <p>Добро пожаловать!</p>
+  <ul id="tasks"></ul>
+  <button onclick="addTask()">Добавить задачу</button>
+
+  <script>
+    function addTask() {
+      const list = document.getElementById('tasks');
+      const item = document.createElement('li');
+      item.textContent = 'Новая задача';
+      list.appendChild(item);
+    }
+  </script>
+</body>
+</html>
 
 
 
