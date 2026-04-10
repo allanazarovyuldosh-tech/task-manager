@@ -8,24 +8,48 @@
       font-family: Arial, sans-serif;
       background-color: #f4f4f4;
       text-align: center;
-      padding-top: 50px;
+      padding: 50px;
     }
     h1 {
       color: #333;
     }
+    ul {
+      list-style: none;
+      padding: 0;
+    }
+    li {
+      background: #fff;
+      margin: 5px 0;
+      padding: 10px;
+      border: 1px solid #ccc;
+    }
     button {
       padding: 10px 20px;
-      font-size: 16px;
       margin-top: 20px;
       cursor: pointer;
     }
   </style>
 </head>
 <body>
-  <h1>Task Manager запущен!</h1>
-  <p>Добро пожаловать в мой проект.</p>
-  <button onclick="alert('Задача добавлена!')">Добавить задачу</button>
+  <h1>Task Manager</h1>
+  <p>Добро пожаловать в мой проект!</p>
+
+  <ul id="tasks">
+    <li>Пример задачи: изучить HTML</li>
+  </ul>
+
+  <button onclick="addTask()">Добавить задачу</button>
+
+  <script>
+    function addTask() {
+      const taskList = document.getElementById('tasks');
+      const newTask = document.createElement('li');
+      newTask.textContent = 'Новая задача';
+      taskList.appendChild(newTask);
+    }
+  </script>
 </body>
 </html>
+
 
 
