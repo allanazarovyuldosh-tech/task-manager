@@ -11,6 +11,19 @@ addBtn.addEventListener("click", () => {
     input.value = "";
   }
 });
+const delBtn = document.createElement("button");
+delBtn.textContent = "Удалить";
+delBtn.style.marginLeft = "10px";
+delBtn.onclick = () => li.remove();
+li.appendChild(delBtn);
+let tasks = JSON.parse(localStorage.getItem("tasks")) || [];
+
+function saveTasks() {
+  localStorage.setItem("tasks", JSON.stringify(tasks));
+}
+li.onclick = () => {
+  li.classList.toggle("done");
+};
 
 
 
