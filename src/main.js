@@ -1,43 +1,16 @@
-document.getElementById("app").innerHTML = `
-  <p>Здесь будет список задач.</p>
-`;
 const input = document.getElementById("taskInput");
 const addBtn = document.getElementById("addTask");
 const list = document.getElementById("taskList");
 
-// Загружаем задачи из localStorage
-let tasks = JSON.parse(localStorage.getItem("tasks")) || [];
-renderTasks();
-
 addBtn.addEventListener("click", () => {
   const text = input.value.trim();
   if (text !== "") {
-    tasks.push(text);
-    localStorage.setItem("tasks", JSON.stringify(tasks));
-    renderTasks();
+    const li = document.createElement("li");
+    li.textContent = text;
+    list.appendChild(li);
     input.value = "";
   }
 });
 
-function renderTasks() {
-  list.innerHTML = "";
-  tasks.forEach((task, index) => {
-    const li = document.createElement("li");
-    li.textContent = task;
-
-    // кнопка удаления
-    const delBtn = document.createElement("button");
-    delBtn.textContent = "Удалить";
-    delBtn.style.marginLeft = "10px";
-    delBtn.onclick = () => {
-      tasks.splice(index, 1);
-      localStorage.setItem("tasks", JSON.stringify(tasks));
-      renderTasks();
-    };
-
-    li.appendChild(delBtn);
-    list.appendChild(li);
-  });
-}
 
 
