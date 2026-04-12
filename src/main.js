@@ -22,9 +22,8 @@ addBtn.addEventListener("click", () => {
     input.value = "";
   }
 });
-const input = document.getElementById("taskInput");
-const addBtn = document.getElementById("addTask");
-const list = document.getElementById("taskList");
+
+
 
 // Загружаем задачи из localStorage при старте
 let tasks = JSON.parse(localStorage.getItem("tasks")) || [];
