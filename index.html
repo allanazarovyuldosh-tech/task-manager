@@ -3,14 +3,19 @@
 <head>
   <meta charset="UTF-8">
   <title>Task Manager</title>
+  <link rel="stylesheet" href="style.css">
 </head>
 <body>
   <h1>Task Manager</h1>
-  <input id="taskInput" type="text" placeholder="Введите задачу">
-  <button id="addTask">Добавить</button>
-  <ul id="taskList"></ul>
+  <input id="taskInput" placeholder="Новая задача">
+  <button onclick="addTask()">Добавить</button>
 
-  <script src="src/main.js"></script>
+  <table id="taskTable">
+    <tr><th>№</th><th>Задача</th><th>Статус</th><th>Действия</th></tr>
+  </table>
+
+  <script src="main.js"></script>
 </body>
 </html>
+
 
