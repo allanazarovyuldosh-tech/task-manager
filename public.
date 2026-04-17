@@ -1,4 +1,0 @@
-index.html
-git add src/*
-git commit -m "Добавил файлы в src"
-git push
