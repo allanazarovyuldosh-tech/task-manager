@@ -1,1 +1,22 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+  <meta charset="UTF-8">
+  <title>Task Manager</title>
+</head>
+<body>
+  <h1>Task Manager</h1>
+  <input id="taskInput" placeholder="Новая задача">
+  <button onclick="addTask()">Добавить</button>
+
+  <table id="taskTable">
+    <tr><th>№</th><th>Задача</th><th>Статус</th><th>Действия</th></tr>
+  </table>
+
+  <script src="main.js"></script>
+</body>
+</html>
+git add src/*
+git commit -m "Добавил файлы в src"
+git push
 
