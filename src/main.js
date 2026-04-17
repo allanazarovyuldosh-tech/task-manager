@@ -34,7 +34,10 @@ function toggleTask(i) {
 function deleteTask(i) {
   tasks.splice(i, 1);
   renderTasks();
-}
+}  git add index.html style.css main.js
+git commit -m "Добавил HTML, CSS и обновил JS для Task Manager"
+git push
+
 
 
 
