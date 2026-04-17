@@ -1,29 +1,41 @@
-const input = document.getElementById("taskInput");
-const addBtn = document.getElementById("addTask");
-const list = document.getElementById("taskList");
+let tasks = [];
 
-addBtn.addEventListener("click", () => {
-  const text = input.value.trim();
-  if (text !== "") {
-    const li = document.createElement("li");
-    li.textContent = text;
-    list.appendChild(li);
-    input.value = "";
-  }
-});
-const delBtn = document.createElement("button");
-delBtn.textContent = "Удалить";
-delBtn.style.marginLeft = "10px";
-delBtn.onclick = () => li.remove();
-li.appendChild(delBtn);
-let tasks = JSON.parse(localStorage.getItem("tasks")) || [];
-
-function saveTasks() {
-  localStorage.setItem("tasks", JSON.stringify(tasks));
+function renderTasks() {
+  const table = document.getElementById("taskTable");
+  table.innerHTML = "<tr><th>№</th><th>Задача</th><th>Статус</th><th>Действия</th></tr>";
+  tasks.forEach((task, i) => {
+    table.innerHTML += `
+      <tr>
+        <td>${i+1}</td>
+        <td>${task.text}</td>
+        <td>${task.done ? "✔" : "✖"}</td>
+        <td>
+          <button onclick="toggleTask(${i})">Выполнено</button>
+          <button onclick="deleteTask(${i})">Удалить</button>
+        </td>
+      </tr>`;
+  });
 }
-li.onclick = () => {
-  li.classList.toggle("done");
-};
+
+function addTask() {
+  const input = document.getElementById("taskInput");
+  if (input.value.trim()) {
+    tasks.push({text: input.value, done: false});
+    input.value = "";
+    renderTasks();
+  }
+}
+
+function toggleTask(i) {
+  tasks[i].done = !tasks[i].done;
+  renderTasks();
+}
+
+function deleteTask(i) {
+  tasks.splice(i, 1);
+  renderTasks();
+}
+
 
 
 
