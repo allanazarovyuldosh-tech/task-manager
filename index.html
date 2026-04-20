@@ -15,16 +15,6 @@
     .statusBtn { background: #f39c12; color: white; border: none; padding: 5px 10px; cursor: pointer; }
     .add { background: #27ae60; color: white; border: none; padding: 5px 15px; cursor: pointer; }
     input { padding: 5px; width: 250px; }
-
-    /* Цветные метки статуса */
-    .status {
-      padding: 4px 8px;
-      border-radius: 6px;
-      color: white;
-      font-weight: bold;
-    }
-    .done { background: #27ae60; }      /* зелёный */
-    .notdone { background: #e74c3c; }   /* красный */
   </style>
 </head>
 <body>
@@ -48,7 +38,7 @@
       <tr>
         <td>1</td>
         <td>Купить хлеб</td>
-        <td><span class="status notdone">Не выполнено</span></td>
+        <td>Не выполнено</td>
         <td>
           <button class="edit">Редактировать</button>
           <button class="delete">Удалить</button>
@@ -70,7 +60,7 @@
         row.innerHTML = `
           <td>${table.rows.length + 1}</td>
           <td>${taskText}</td>
-          <td><span class="status notdone">Не выполнено</span></td>
+          <td>Не выполнено</td>
           <td>
             <button class="edit">Редактировать</button>
             <button class="delete">Удалить</button>
@@ -101,21 +91,14 @@
 
       if (e.target.classList.contains('statusBtn')) {
         const row = e.target.closest('tr');
-        const statusSpan = row.querySelector('.status');
-        if (statusSpan.classList.contains('notdone')) {
-          statusSpan.textContent = 'Выполнено';
-          statusSpan.classList.remove('notdone');
-          statusSpan.classList.add('done');
-        } else {
-          statusSpan.textContent = 'Не выполнено';
-          statusSpan.classList.remove('done');
-          statusSpan.classList.add('notdone');
-        }
+        const statusCell = row.children[2];
+        statusCell.textContent = (statusCell.textContent === 'Не выполнено') ? 'Выполнено' : 'Не выполнено';
       }
     });
   </script>
 </body>
 </html>
+
 
 
 
