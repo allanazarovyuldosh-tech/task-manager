@@ -45,48 +45,45 @@
       </tr>
     </tbody>
   </table>
-
   <script>
-    const table = document.querySelector('#taskTable tbody');
+  const list = document.querySelector('#taskList');
 
-    // Добавление новой задачи
-    document.querySelector('#addButton').addEventListener('click', () => {
-      const input = document.querySelector('#newTask');
-      const taskText = input.value.trim();
-      if (taskText) {
-        const row = document.createElement('tr');
-        row.innerHTML = `
-          <td>${table.rows.length + 1}</td>
-          <td>${taskText}</td>
-          <td>Не выполнено</td>
-          <td>
-            <button class="edit">Редактировать</button>
-            <button class="delete">Удалить</button>
-          </td>`;
-        table.appendChild(row);
-        input.value = '';
-      }
-    });
+  document.querySelector('#addButton').addEventListener('click', () => {
+    const input = document.querySelector('#newTask');
+    const taskText = input.value.trim();
+    if (taskText) {
+      const item = document.createElement('div');
+      item.style.margin = "10px 0";
+      item.style.padding = "10px";
+      item.style.border = "1px solid #ccc";
+      item.style.borderRadius = "6px";
+      item.innerHTML = `
+        <strong>${taskText}</strong>
+        <button class="edit">Редактировать</button>
+        <button class="delete">Удалить</button>
+      `;
+      list.appendChild(item);
+      input.value = '';
+    }
+  });
 
-    // Делегирование событий для кнопок
-    document.querySelector('#taskTable').addEventListener('click', (e) => {
-      if (e.target.classList.contains('edit')) {
-        const row = e.target.closest('tr');
-        const taskCell = row.children[1];
-        const newText = prompt('Изменить задачу:', taskCell.textContent);
-        if (newText !== null && newText.trim() !== '') {
-          taskCell.textContent = newText.trim();
-        }
+  // Делегирование событий
+  document.querySelector('#taskList').addEventListener('click', (e) => {
+    if (e.target.classList.contains('edit')) {
+      const item = e.target.closest('div');
+      const taskText = item.querySelector('strong');
+      const newText = prompt('Изменить задачу:', taskText.textContent);
+      if (newText !== null && newText.trim() !== '') {
+        taskText.textContent = newText.trim();
       }
+    }
+    if (e.target.classList.contains('delete')) {
+      e.target.closest('div').remove();
+    }
+  });
+</script>
 
-      if (e.target.classList.contains('delete')) {
-        e.target.closest('tr').remove();
-        // пересчёт номеров
-        const rows = document.querySelectorAll('#taskTable tbody tr');
-        rows.forEach((r, i) => r.children[0].textContent = i + 1);
-      }
-    });
-  </script>
+  
    <div id="taskList"></div>
 
 </body>
