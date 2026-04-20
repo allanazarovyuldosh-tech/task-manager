@@ -30,9 +30,40 @@
   </table>
 
   <script src="main.js"></script>
+<script>
+  // Добавление новой задачи
+  document.querySelector('#addButton').addEventListener('click', () => {
+    const input = document.querySelector('#newTask');
+    const taskText = input.value.trim();
+    if (taskText) {
+      const table = document.querySelector('#taskTable tbody');
+      const row = document.createElement('tr');
+      row.innerHTML = `
+        <td>${table.rows.length + 1}</td>
+        <td>${taskText}</td>
+        <td><span class="status">Не выполнено</span></td>
+        <td>
+          <button class="edit">Редактировать</button>
+          <button class="delete">Удалить</button>
+        </td>`;
+      table.appendChild(row);
+      input.value = '';
+    }
+  });
+
+  // Делегирование событий для кнопок
+  document.querySelector('#taskTable').addEventListener('click', (e) => {
+    if (e.target.classList.contains('delete')) {
+      e.target.closest('tr').remove();
+    } else if (e.target.classList.contains('edit')) {
+      const taskCell = e.target.closest('tr').children[1];
+      const newText = prompt('Изменить задачу:', taskCell.textContent);
+      if (newText !== null) taskCell.textContent = newText;
+    }
+  });
+</script>
 </body>
 </html>
-
 
 
 
