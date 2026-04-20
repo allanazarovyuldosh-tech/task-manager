@@ -62,8 +62,29 @@
     }
   });
 </script>
+<script>
+  // Делегирование событий для всей таблицы
+  document.querySelector('#taskTable').addEventListener('click', (e) => {
+    // Кнопка "Редактировать"
+    if (e.target.classList.contains('edit')) {
+      const row = e.target.closest('tr');
+      const taskCell = row.children[1];
+      const newText = prompt('Изменить задачу:', taskCell.textContent);
+      if (newText !== null && newText.trim() !== '') {
+        taskCell.textContent = newText.trim();
+      }
+    }
+
+    // Кнопка "Удалить"
+    if (e.target.classList.contains('delete')) {
+      e.target.closest('tr').remove();
+      // обновляем номера строк
+      const rows = document.querySelectorAll('#taskTable tbody tr');
+      rows.forEach((r, i) => r.children[0].textContent = i + 1);
+    }
+  });
+</script>
 </body>
 </html>
-
 
 
