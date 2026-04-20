@@ -12,6 +12,7 @@
 ## 🚀 Запуск
 - Онлайн: открой ссылку выше.
 - Локально: открой `index.html` в браузере.
+<img width="1536" height="1024" alt="image" src="https://github.com/user-attachments/assets/cd287ede-e249-48b8-8f60-59150cca028f" />
 
 
 
