@@ -23,9 +23,8 @@
       color: white;
       font-weight: bold;
     }
-    .done { background: #27ae60; }       /* зелёный */
-    .notdone { background: #e74c3c; }    /* красный */
-    .progress { background: #f39c12; }   /* оранжевый */
+    .done { background: #27ae60; }      /* зелёный */
+    .notdone { background: #e74c3c; }   /* красный */
   </style>
 </head>
 <body>
@@ -104,12 +103,8 @@
         const row = e.target.closest('tr');
         const statusSpan = row.querySelector('.status');
         if (statusSpan.classList.contains('notdone')) {
-          statusSpan.textContent = 'В процессе';
-          statusSpan.classList.remove('notdone');
-          statusSpan.classList.add('progress');
-        } else if (statusSpan.classList.contains('progress')) {
           statusSpan.textContent = 'Выполнено';
-          statusSpan.classList.remove('progress');
+          statusSpan.classList.remove('notdone');
           statusSpan.classList.add('done');
         } else {
           statusSpan.textContent = 'Не выполнено';
@@ -121,6 +116,7 @@
   </script>
 </body>
 </html>
+
 
 
 
