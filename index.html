@@ -3,129 +3,91 @@
 <head>
   <meta charset="UTF-8">
   <title>Task Manager</title>
+  <style>
+    body { font-family: Arial, sans-serif; margin: 20px; }
+    h1 { color: #2c3e50; }
+    table { width: 100%; border-collapse: collapse; margin-top: 20px; }
+    th, td { border: 1px solid #ccc; padding: 10px; text-align: center; }
+    th { background: #3498db; color: white; }
+    tr:nth-child(even) { background: #f9f9f9; }
+    .edit { background: #2980b9; color: white; border: none; padding: 5px 10px; cursor: pointer; }
+    .delete { background: #e74c3c; color: white; border: none; padding: 5px 10px; cursor: pointer; }
+    .add { background: #27ae60; color: white; border: none; padding: 5px 15px; cursor: pointer; }
+    input { padding: 5px; width: 250px; }
+  </style>
 </head>
 <body>
   <h1>Task Manager</h1>
-  <input id="taskInput" placeholder="Новая задача">
-  <button onclick="addTask()">Добавить</button>
-<body>
-  <header>
-    <h1>Task Manager</h1>
-  </header>
 
-  <!-- Скриншот интерфейса -->
-  <div style="text-align:center; margin:20px 0;">
-    <img src="screenshot.png" alt="Интерфейс менеджера задач" width="600">
-  </div>
+  <!-- Форма добавления задачи -->
+  <input id="newTask" type="text" placeholder="Новая задача">
+  <button id="addButton" class="add">Добавить</button>
 
-  <!-- Основная таблица задач -->
-  <table>
-<img width="1536" height="1024" alt="image" src="https://github.com/user-attachments/assets/cd287ede-e249-48b8-8f60-59150cca028f" />
-<table id="taskTable">
-  <thead>
-    <tr>
-      <th>№</th>
-      <th>Задача</th>
-      <th>Статус</th>
-      <th>Действия</th>
-    </tr>
-  </thead>
-  <tbody>
-    <tr>
-      <td>1</td>
-      <td>Купить хлеб</td>
-      <td>Не выполнено</td>
-      <td>
-        <button class="edit">Редактировать</button>
-        <button class="delete">Удалить</button>
-      </td>
-    </tr>
-  </tbody>
-</table>
-
-<script>
-  // Делегирование событий для кнопок
-  document.querySelector('#taskTable').addEventListener('click', (e) => {
-    if (e.target.classList.contains('edit')) {
-      const row = e.target.closest('tr');
-      const taskCell = row.children[1];
-      const newText = prompt('Изменить задачу:', taskCell.textContent);
-      if (newText !== null && newText.trim() !== '') {
-        taskCell.textContent = newText.trim();
-      }
-    }
-
-    if (e.target.classList.contains('delete')) {
-      e.target.closest('tr').remove();
-      // пересчёт номеров
-      const rows = document.querySelectorAll('#taskTable tbody tr');
-      rows.forEach((r, i) => r.children[0].textContent = i + 1);
-    }
-  });
-</script>
-
-  </table>
-</body>
-
+  <!-- Таблица задач -->
   <table id="taskTable">
-    <tr><th>№</th><th>Задача</th><th>Статус</th><th>Действия</th></tr>
-  </table>
-
-  <script src="main.js"></script>
-<script>
-  // Добавление новой задачи
-  document.querySelector('#addButton').addEventListener('click', () => {
-    const input = document.querySelector('#newTask');
-    const taskText = input.value.trim();
-    if (taskText) {
-      const table = document.querySelector('#taskTable tbody');
-      const row = document.createElement('tr');
-      row.innerHTML = `
-        <td>${table.rows.length + 1}</td>
-        <td>${taskText}</td>
-        <td><span class="status">Не выполнено</span></td>
+    <thead>
+      <tr>
+        <th>№</th>
+        <th>Задача</th>
+        <th>Статус</th>
+        <th>Действия</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td>1</td>
+        <td>Купить хлеб</td>
+        <td>Не выполнено</td>
         <td>
           <button class="edit">Редактировать</button>
           <button class="delete">Удалить</button>
-        </td>`;
-      table.appendChild(row);
-      input.value = '';
-    }
-  });
+        </td>
+      </tr>
+    </tbody>
+  </table>
 
-  // Делегирование событий для кнопок
-  document.querySelector('#taskTable').addEventListener('click', (e) => {
-    if (e.target.classList.contains('delete')) {
-      e.target.closest('tr').remove();
-    } else if (e.target.classList.contains('edit')) {
-      const taskCell = e.target.closest('tr').children[1];
-      const newText = prompt('Изменить задачу:', taskCell.textContent);
-      if (newText !== null) taskCell.textContent = newText;
-    }
-  });
-</script>
-<script>
-  // Делегирование событий для всей таблицы
-  document.querySelector('#taskTable').addEventListener('click', (e) => {
-    // Кнопка "Редактировать"
-    if (e.target.classList.contains('edit')) {
-      const row = e.target.closest('tr');
-      const taskCell = row.children[1];
-      const newText = prompt('Изменить задачу:', taskCell.textContent);
-      if (newText !== null && newText.trim() !== '') {
-        taskCell.textContent = newText.trim();
+  <script>
+    const table = document.querySelector('#taskTable tbody');
+
+    // Добавление новой задачи
+    document.querySelector('#addButton').addEventListener('click', () => {
+      const input = document.querySelector('#newTask');
+      const taskText = input.value.trim();
+      if (taskText) {
+        const row = document.createElement('tr');
+        row.innerHTML = `
+          <td>${table.rows.length + 1}</td>
+          <td>${taskText}</td>
+          <td>Не выполнено</td>
+          <td>
+            <button class="edit">Редактировать</button>
+            <button class="delete">Удалить</button>
+          </td>`;
+        table.appendChild(row);
+        input.value = '';
       }
-    }
+    });
 
-    // Кнопка "Удалить"
-    if (e.target.classList.contains('delete')) {
-      e.target.closest('tr').remove();
-      // обновляем номера строк
-      const rows = document.querySelectorAll('#taskTable tbody tr');
-      rows.forEach((r, i) => r.children[0].textContent = i + 1);
-    }
-  });
-</script>
+    // Делегирование событий для кнопок
+    document.querySelector('#taskTable').addEventListener('click', (e) => {
+      if (e.target.classList.contains('edit')) {
+        const row = e.target.closest('tr');
+        const taskCell = row.children[1];
+        const newText = prompt('Изменить задачу:', taskCell.textContent);
+        if (newText !== null && newText.trim() !== '') {
+          taskCell.textContent = newText.trim();
+        }
+      }
+
+      if (e.target.classList.contains('delete')) {
+        e.target.closest('tr').remove();
+        // пересчёт номеров
+        const rows = document.querySelectorAll('#taskTable tbody tr');
+        rows.forEach((r, i) => r.children[0].textContent = i + 1);
+      }
+    });
+  </script>
+   <img width="1536" height="1024" alt="image" src="https://github.com/user-attachments/assets/cd287ede-e249-48b8-8f60-59150cca028f" />
 </body>
 </html>
 
