@@ -21,6 +21,48 @@
   <!-- Основная таблица задач -->
   <table>
 <img width="1536" height="1024" alt="image" src="https://github.com/user-attachments/assets/cd287ede-e249-48b8-8f60-59150cca028f" />
+<table id="taskTable">
+  <thead>
+    <tr>
+      <th>№</th>
+      <th>Задача</th>
+      <th>Статус</th>
+      <th>Действия</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td>1</td>
+      <td>Купить хлеб</td>
+      <td>Не выполнено</td>
+      <td>
+        <button class="edit">Редактировать</button>
+        <button class="delete">Удалить</button>
+      </td>
+    </tr>
+  </tbody>
+</table>
+
+<script>
+  // Делегирование событий для кнопок
+  document.querySelector('#taskTable').addEventListener('click', (e) => {
+    if (e.target.classList.contains('edit')) {
+      const row = e.target.closest('tr');
+      const taskCell = row.children[1];
+      const newText = prompt('Изменить задачу:', taskCell.textContent);
+      if (newText !== null && newText.trim() !== '') {
+        taskCell.textContent = newText.trim();
+      }
+    }
+
+    if (e.target.classList.contains('delete')) {
+      e.target.closest('tr').remove();
+      // пересчёт номеров
+      const rows = document.querySelectorAll('#taskTable tbody tr');
+      rows.forEach((r, i) => r.children[0].textContent = i + 1);
+    }
+  });
+</script>
 
   </table>
 </body>
