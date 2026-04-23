@@ -12,7 +12,8 @@
 ## 🚀 Запуск
 - Онлайн: открой ссылку выше.
 - Локально: открой `index.html` в браузере.
-<img width="1536" height="1024" alt="image" src="https://github.com/user-attachments/assets/cd287ede-e249-48b8-8f60-59150cca028f" />
+  <img width="1024" height="543" alt="image" src="https://github.com/user-attachments/assets/c44e6ebb-a392-4241-ac32-8a7ee9c50182" />
+
 # Task Manager
 
 Простой и удобный менеджер задач для личного использования и командной работы.
