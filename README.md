@@ -29,6 +29,12 @@ git clone https://github.com/allanazarovyuldosh-tech/task-manager.git
 cd task-manager
 npm install
 npm start
+## 📊 Статусы задач
+
+- 🟢 **Active** — задача выполняется
+- 🟡 **Pending** — задача в ожидании или в процессе
+- 🔴 **Cancelled** — задача отменена
+- ✅ **Completed** — задача завершена
 
 
 
