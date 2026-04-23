@@ -36,6 +36,23 @@ npm start
 - 🟡 **Pending** — задача в ожидании или в процессе
 - 🔴 **Cancelled** — задача отменена
 - ✅ **Completed** — задача завершена
+## 📝 Пример кода (автосохранение задач)
+
+```javascript
+// Загружаем задачи из localStorage
+let tasks = JSON.parse(localStorage.getItem("tasks")) || [];
+
+// Сохраняем задачи
+function saveTasks() {
+  localStorage.setItem("tasks", JSON.stringify(tasks));
+}
+
+// Добавление задачи
+function addTask(title) {
+  const task = { id: Date.now(), title, status: "Active" };
+  tasks.push(task);
+  saveTasks();
+}
 
 
 
