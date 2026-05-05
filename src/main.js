@@ -37,6 +37,20 @@ function deleteTask(i) {
 }  git add index.html style.css main.js
 git commit -m "Добавил HTML, CSS и обновил JS для Task Manager"
 git push
+// Загружаем задачи из localStorage
+let tasks = JSON.parse(localStorage.getItem("tasks")) || [];
+
+// Сохраняем задачи
+function saveTasks() {
+  localStorage.setItem("tasks", JSON.stringify(tasks));
+}
+
+// Добавление задачи
+function addTask(title) {
+  const task = { id: Date.now(), title, status: "Не выполнено" };
+  tasks.push(task);
+  saveTasks();
+}
 
 
 
